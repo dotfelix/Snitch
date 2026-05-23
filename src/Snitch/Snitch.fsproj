@@ -9,7 +9,8 @@
         <PackageProjectUrl>https://github.com/dotfelix/Snitch</PackageProjectUrl>
         <Description>Real-time exception alerting for .NET Core apps</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Version>1.0.1</Version> 
+        <PackageTags>Exception, Alerting, Slack</PackageTags>
+        <Version>1.0.2</Version> 
     </PropertyGroup>
 
     <ItemGroup>
