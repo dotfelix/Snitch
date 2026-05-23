@@ -8,7 +8,7 @@
         <RepositoryUrl>https://github.com/dotfelix/Snitch</RepositoryUrl>
         <PackageProjectUrl>https://github.com/dotfelix/Snitch</PackageProjectUrl>
         <Description>Real-time exception alerting for .NET Core apps</Description>
-        <Version>1.0.0</Version> 
+        <Version>1.0.1</Version> 
     </PropertyGroup>
 
     <ItemGroup>
