@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Snitch.Example/Snitch.Example.fsproj" />
+    <Project Path="src/Snitch.Test/Snitch.Test.fsproj" />
+    <Project Path="src/Snitch/Snitch.fsproj" />
+  </Folder>
+</Solution>
