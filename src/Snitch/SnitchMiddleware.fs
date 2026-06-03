@@ -3,7 +3,7 @@ namespace Snitch
 open System.Runtime.ExceptionServices
 open Microsoft.AspNetCore.Http
 
-type SnitchMiddleware(next: RequestDelegate, app: Slack) =
+type SnitchMiddleware(next: RequestDelegate) =
     
     member this.InvokeAsync(context: HttpContext) =
         task { 
@@ -11,7 +11,7 @@ type SnitchMiddleware(next: RequestDelegate, app: Slack) =
                 do! next.Invoke(context)
             with
             | ex ->
-                do! ex.ToSnitched(app)
+                do! ex.ToSnitched()
                 ExceptionDispatchInfo.Capture(ex).Throw()
                 
                 return ()

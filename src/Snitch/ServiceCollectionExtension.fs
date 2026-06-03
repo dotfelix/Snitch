@@ -1,6 +1,7 @@
 namespace Snitch
 
 open System
+open System.Collections.Concurrent
 open System.Net.Http
 open System.Runtime.CompilerServices
 open Microsoft.AspNetCore.Builder
@@ -19,10 +20,11 @@ type ServiceCollectionExtension =
         let httpClient = new HttpClient() 
         let app = Slack(httpClient, appName, slackHookUrl)
 
-        services.AddSingleton(app) |> ignore
+        services.AddSingleton<ISnitch>(app) |> ignore
+        services.AddSingleton<ConcurrentDictionary<string, string>>() |> ignore
+        
+        SnitchServiceLocator.initialize (services.BuildServiceProvider())
 
-        services
-    
     [<Extension>]
     static member UseSnitch (app: IApplicationBuilder) =
         app.UseMiddleware<SnitchMiddleware>()

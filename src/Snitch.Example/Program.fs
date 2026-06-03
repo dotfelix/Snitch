@@ -27,9 +27,20 @@ module Program =
         // app.MapControllers()
 
         app.MapGet(
-            "/",
+            "/default",
             Func<HttpContext, IActionResult>(fun _ ->
                 let _ = 1 / 0 // <-- exception here
+                OkResult())
+        )
+
+        app.MapGet(
+            "/handled",
+            Func<HttpContext, IActionResult>(fun ctx -> 
+                try
+                    let rst = 1 / 0 // <-- exception here but captured
+                    rst |> ignore
+                with ex ->
+                    ex.ToSnitched() |> ignore
                 OkResult())
         )
 
