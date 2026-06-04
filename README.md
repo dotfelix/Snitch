@@ -8,11 +8,11 @@ Real-time exception alerting for .NET Core apps
 
 You can install [Snitch with NuGet](https://www.nuget.org/packages/Snitch):
 
-    Install-Package Snitch
+    Install-Package Snitched
     
 Or via the .NET Core command line interface:
 
-    dotnet add package Snitch
+    dotnet add package Snitched
 
 ### Using Snitch
 
