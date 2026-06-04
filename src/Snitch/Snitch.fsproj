@@ -10,14 +10,16 @@
         <Description>Real-time exception alerting for .NET Core apps</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>Exception, Alerting, Slack</PackageTags>
-        <Version>1.0.3</Version> 
+        <Version>1.0.4</Version> 
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="ISnitch.fs" />
         <Compile Include="Slack.fs" />
         <Compile Include="ServiceLocator.fs" />
         <Compile Include="SnitchExtension.fs" />
         <Compile Include="SnitchMiddleware.fs" />
+        <Compile Include="SnitchService.fs" />
         <Compile Include="ServiceCollectionExtension.fs" />
     </ItemGroup>
 
@@ -30,7 +32,6 @@
 
     <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
-        <Compile Include="SnitchService.fs" />
     </ItemGroup>
 
     <ItemGroup>

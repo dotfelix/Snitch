@@ -3,12 +3,6 @@ namespace Snitch
 open System
 open System.Net.Http
 open System.Text
-open System.Threading.Tasks
-
-
-type ISnitch =
-    abstract member Submit : string -> Task
-    abstract member AppName : string
 
 type Slack(client: HttpClient, appName: string, url: string) =
     member val Client = client with get, set 
@@ -24,9 +18,7 @@ type Slack(client: HttpClient, appName: string, url: string) =
                 if not response.IsSuccessStatusCode then
                     let! error = response.Content.ReadAsStringAsync()
                     error |> ignore // TODO send to log
-                    
-                return ()    
+                    return false
+                else
+                    return true    
             }
-
-        
-        
