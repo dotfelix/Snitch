@@ -33,7 +33,7 @@ type SnitchExtension =
         let pattern = @"in\s+((?:/[^\s:]+)+:\s*line\s+\d+)" // matches path/to/file:line 1
         let m = Regex.Match(ex, pattern)
 
-        if m.Success then Some m.Groups.[1].Value else None
+        if m.Success then Some m.Groups[1].Value else None
 
     [<Extension>]
     static member ToHashCode(str: string) =
@@ -41,7 +41,7 @@ type SnitchExtension =
         str |> Encoding.UTF8.GetBytes |> sha.ComputeHash |> Convert.ToHexString
 
     [<Extension>]
-    static member ToSnitched(ex: Exception) =
+    static member Snitched(ex: Exception) =
         task {
             try
                 let app = SnitchServiceLocator.get<ISnitch> ()

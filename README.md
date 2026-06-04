@@ -26,5 +26,18 @@ services.AddSnitch(appName: "Snitch.Example")
 app.UseSnitch()
 ```
 
+### Usage
+```csharp
+try 
+{
+    // your code here
+}
+catch (Exception ex)
+{
+    await ex.Snitched();
+}
+```
+
 ### Examples
+See Example Project
 See Test

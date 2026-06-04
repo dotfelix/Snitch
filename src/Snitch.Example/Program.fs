@@ -40,7 +40,7 @@ module Program =
                     let rst = 1 / 0 // <-- exception here but captured
                     rst |> ignore
                 with ex ->
-                    ex.ToSnitched() |> ignore
+                    ex.Snitched() |> ignore
                 OkResult())
         )
 
