@@ -24,7 +24,6 @@ module Program =
         let app = builder.Build()
 
         app.UseSnitch()
-        // app.MapControllers()
 
         app.MapGet(
             "/default",
@@ -35,12 +34,13 @@ module Program =
 
         app.MapGet(
             "/handled",
-            Func<HttpContext, IActionResult>(fun ctx -> 
+            Func<HttpContext, IActionResult>(fun ctx ->
                 try
                     let rst = 1 / 0 // <-- exception here but captured
                     rst |> ignore
                 with ex ->
-                    ex.Snitched() |> ignore
+                    ex.Snitched()
+
                 OkResult())
         )
 

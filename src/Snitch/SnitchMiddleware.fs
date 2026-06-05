@@ -11,9 +11,7 @@ type SnitchMiddleware(next: RequestDelegate) =
                 do! next.Invoke(context)
             with
             | ex ->
-                do! ex.Snitched()
-                ExceptionDispatchInfo.Capture(ex).Throw()
-                
-                return ()
+                ex.Snitched()
+                ExceptionDispatchInfo.Capture(ex).Throw() 
         }
         

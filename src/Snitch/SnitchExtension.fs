@@ -42,27 +42,23 @@ type SnitchExtension =
 
     [<Extension>]
     static member Snitched(ex: Exception) =
-        task {
-            try
-                let app = SnitchServiceLocator.get<ISnitch> ()
-                let dict = SnitchServiceLocator.get<ConcurrentDictionary<string, Except>> ()
+        try
+            let app = SnitchServiceLocator.get<ISnitch> ()
+            let dict = SnitchServiceLocator.get<ConcurrentDictionary<string, Except>> ()
 
-                let format = ex.ToSlackMessage(app.AppName)
+            let format = ex.ToSlackMessage(app.AppName)
 
-                let path = ex.StackTrace.ExtractFirstPath() |> Option.defaultValue ex.Message // fallback to message if no path found
-                let hashCode = path.ToHashCode()
+            let path = ex.StackTrace.ExtractFirstPath() |> Option.defaultValue ex.Message // fallback to message if no path found
+            let hashCode = path.ToHashCode()
 
-                let except =
-                    { Except.Subject = ex.Message
-                      Message = format
-                      Submitted = false
-                      SubmittedAt = None
-                      OccurredAt = DateTime.UtcNow }
-                // store in dictionary
-                dict.TryAdd(hashCode, except) |> ignore
+            let except =
+                { Except.Subject = ex.Message
+                  Message = format
+                  Submitted = false
+                  SubmittedAt = None
+                  OccurredAt = DateTime.UtcNow }
+            // store in dictionary
+            dict.TryAdd(hashCode, except) |> ignore
 
-            with _ ->
-                () // TODO: swallow the exception for now
-
-            return ()
-        }
+        with _ ->
+            () // TODO: swallow the exception for now
