@@ -29,7 +29,7 @@ type SnitchService(app: ISnitch, dict: ConcurrentDictionary<string, Except>) =
                 | Some submittedAt ->
                     let submittedDiff = now - submittedAt
 
-                    if submittedDiff.TotalMinutes > 5.0 then
+                    if submittedDiff.TotalMinutes > 15.0 then // TODO: move to config
                         return except, true
                     else
                         return except, false

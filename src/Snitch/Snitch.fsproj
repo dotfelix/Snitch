@@ -10,7 +10,7 @@
         <Description>Real-time exception alerting for .NET Core apps</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>Exception, Alerting, Slack</PackageTags>
-        <Version>1.0.7</Version> 
+        <Version>1.0.8</Version> 
     </PropertyGroup>
 
     <ItemGroup>
